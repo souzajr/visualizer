@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>AI Orb</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+    <div class="container">
+        <button class="hamburger-menu">
+            <span class="material-icons">menu</span>
+        </button>
+
+        <div class="menu">
+            <div class="menu-content">
+                <select class="orb-selector" id="orbSelector">
+                    <option value="Fluid Orb">Fluid Orb</option>
+                    <option value="Bubble Orb">Bubble Orb</option>
+                    <option value="Plasma Orb">Plasma Orb</option>
+                    <option value="Dot Orb">Dot Orb</option>
+                    <option value="Aurora Orb">Aurora Orb</option>
+                    <option value="Particle Orb">Particle Orb</option>
+                    <option value="Crystal Orb">Crystal Orb</option>
+                    <option value="Nebula Orb">Nebula Orb</option>
+                    <option value="Wave Orb">Wave Orb</option>
+                    <option value="Energy Orb">Energy Orb</option>
+                    <option value="Vortex Orb">Vortex Orb</option>
+                    <option value="Swirl Orb">Swirl Orb</option>
+                </select>
+                
+                <div class="range-control">
+                    <label>Orb Size</label>
+                    <input type="range" id="sizeSlider" min="0" max="500" value="250" step="10">
+                    <span id="sizeValue">250</span>
+                </div>
+
+                <div class="color-control">
+                    <label>Orb Colors</label>
+                    <div class="color-inputs">
+                        <div class="color-input-group">
+                            <label>Base</label>
+                            <input type="color" id="baseColor" value="#50C878">
+                        </div>
+                        <div class="color-input-group">
+                            <label>Glow</label>
+                            <input type="color" id="glowColor" value="#40E0D0">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gradient-control">
+                    <label>Background Color</label>
+                    <div class="gradient-wrapper">
+                        <div id="gradientBar" class="gradient-bar"></div>
+                        <input type="color" id="bgGradientStart" value="#e0e0e0" class="hidden">
+                        <input type="color" id="bgGradientEnd" value="#f0f0f0" class="hidden">
+                    </div>
+                </div>
+
+                <div class="range-control">
+                    <label>Pulse Speed</label>
+                    <input type="range" id="pulseSpeed" value="0.02" step="0.001" min="0.001" max="0.1">
+                    <span id="pulseSpeedValue">0.02</span>
+                </div>
+
+                <div class="range-control">
+                    <label>Min Opacity</label>
+                    <input type="range" id="minOpacity" value="0.6" step="0.05" min="0" max="1">
+                    <span id="minOpacityValue">0.6</span>
+                </div>
+
+                <div class="range-control">
+                    <label>Max Opacity</label>
+                    <input type="range" id="maxOpacity" value="0.95" step="0.05" min="0" max="1">
+                    <span id="maxOpacityValue">0.95</span>
+                </div>
+
+                <div class="llm-control">
+                    <label>Voice</label>
+                    <select id="voiceSelect" class="llm-selector">
+                        <option value="alloy">Alloy - Neutral</option>
+                        <option value="echo">Echo - Soft</option>
+                        <option value="fable">Fable - British</option>
+                        <option value="onyx">Onyx - Deep</option>
+                        <option value="nova" selected>Nova - Energetic</option>
+                        <option value="shimmer">Shimmer - Clear</option>
+                    </select>
+                </div>
+
+                <div class="llm-control">
+                    <label>LLM Provider</label>
+                    <select id="llmSelect" class="llm-selector">
+                        <option value="gpt">GPT</option>
+                        <option value="1mind">1Mind</option>
+                    </select>
+                </div>
+
+                <div id="gptControls" class="llm-control">
+                    <label>System Prompt</label>
+                    <textarea id="systemPrompt" rows="3">You are a helpful AI assistant.</textarea>
+                </div>
+
+                <div id="oneMindControls" class="llm-control hidden">
+                    <label>AI Selection</label>
+                    <select id="aiSelect" class="llm-selector">
+                        <option value="61d8c8d0-bc62-4d7f-9c71-4cbc84dd5d2d">Mindy Website AI</option>
+                        <option value="58a72e80-1bbd-4fad-a1f0-934718b1a363">Amanda AI - Sales</option>
+                        <option value="cc9191a5-2b24-4018-8bcd-7bc2cd2b689f">Amanda AI - Investor</option>
+                        <option value="MEADOWS">Rob-bot</option>
+                        <option value="custom">Other</option>
+                    </select>
+                    <input type="text" id="customAiId" class="hidden" placeholder="Custom AI ID">
+                    <button id="startSession" class="session-button">Start Session</button>
+                </div>
+
+                <label class="show-chat">
+                    <input type="checkbox" id="showChat" checked>
+                    Show Chat
+                </label>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="orb-container">
+                <canvas id="orbCanvas"></canvas>
+            </div>
+            
+            <div id="chatOverlay" class="chat-overlay">
+                <div class="chat-messages"></div>
+                <div class="input-container">
+                    <input type="text" id="textInput" placeholder="Type your message and press Enter...">
+                    <button id="micButton" class="mic-button">
+                        <span class="material-icons">mic</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="dist/app.js"></script>
+</body>
+</html>

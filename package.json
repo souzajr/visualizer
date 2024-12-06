@@ -1,0 +1,19 @@
+{
+  "name": "ai-orb",
+  "version": "1.0.0",
+  "description": "AI-powered orb visualization with speech interaction",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "serve": "http-server -c-1",
+    "dev": "concurrently \"npm run watch\" \"npm run serve\"",
+    "deploy": "bash deploy.sh",
+    "predeploy": "npm run build"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "http-server": "^14.1.1",
+    "concurrently": "^8.0.1"
+  }
+}
